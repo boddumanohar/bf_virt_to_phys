@@ -20,7 +20,7 @@
 #include <bfvmm/hve/arch/intel_x64/exit_handler/exit_handler.h>
 #include <bfdebug.h>
 #include <bfvmm/memory_manager/buddy_allocator.h>
-#include <bfvmm/memory_manager/arch/x64/map_ptr.h>
+#include <bfvmm/memory_manager/arch/x64/unique_map.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -49,7 +49,7 @@ public:
         uintptr_t buffer = vmcs->save_state()->rdi;
         uint64_t size = 4096;
 
-        //auto gpa1 = bfvmm::x64::virt_to_phys_with_cr3(buffer, ::intel_x64::vmcs::guest_cr3::get());
+        auto gpa1 = bfvmm::x64::virt_to_phys_with_cr3(buffer, ::intel_x64::vmcs::guest_cr3::get());
    
         return advance(vmcs);
     }

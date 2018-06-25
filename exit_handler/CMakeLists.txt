@@ -5,6 +5,6 @@ include(${SOURCE_CMAKE_DIR}/project.cmake)
 init_project()
 
 add_vmm_executable(
-    libvmi_extensions	
+    example_vmm
     SOURCES vmcall_handler.cpp
 )
